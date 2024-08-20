@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: url('/static/hm.jpg'); /* Replace 'your-background-image.jpg' with your actual image file */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h3 {
+            color: white;
+        }
+        ul {
+            color: white;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4" align="center"><u>Sentiment Analysis Result</u></h1>
+
+        <h3>Comments:</h3>
+        <ul>
+            {% for comment in comments %}
+            <li>{{ comment }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Pie Chart</h3>
+                <img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h3>Bar Chart</h3>
+                <img src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart" class="img-fluid">
+            </div>
+        </div>
+
+        <h3 class="mt-5">Sentiment Counts:</h3>
+        <ul>
+            <li>Positive: {{ sentiment_counts['Positive'] }}</li>
+            <li>Negative: {{ sentiment_counts['Negative'] }}</li>
+            <li>Neutral: {{ sentiment_counts['Neutral'] }}</li>
+        </ul>
+
+        <div class="center">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
